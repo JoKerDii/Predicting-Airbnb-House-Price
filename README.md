@@ -1,6 +1,6 @@
 # Predicting Los Angeles House Price
 
-[EDA notebook](https://github.com/JoKerDii/Predicting-Airbnb-House-Price/blob/main/main-notebook/Airbnb_losangeles_eda.ipynb), [Model notebook](https://github.com/JoKerDii/Predicting-Airbnb-House-Price/blob/main/main-notebook/Airbnb_losangeles_modeling.ipynb)
+[EDA notebook](https://nbviewer.org/github/JoKerDii/Predicting-Airbnb-House-Price/blob/main/main-notebook/Airbnb_losangeles_eda.ipynb), [Model notebook](https://nbviewer.org/github/JoKerDii/Predicting-Airbnb-House-Price/blob/main/main-notebook/Airbnb_losangeles_modeling.ipynb)
 
 ## Overview
 
@@ -40,6 +40,29 @@ From the coefficient estimates of Lasso Regression model, we learn that availabi
 With the help of LIME, SHAP, and ELI5 explainer, we can interpret regression models, i.e. how the models are making predictions based on features, which features are important, etc. For example, we find houses with entire home/apt type of room, unknown neighborhood, fewer minimum nights required, more reviews, and larger latitude and longitude tend to be more expensive.  
 
 For non-parametric models random forest regressor and XGB regressor, entire home/apt variables appear to be the most important variable.
+
+## FastAPI
+
+Clone the repo
+
+```bash
+git clone https://github.com/JoKerDii/Predicting-Airbnb-House-Price.git
+```
+
+Download dependencies
+
+```
+pip install -r requirements.txt
+```
+
+Run app.py
+
+```
+cd APP
+python3 app.py
+```
+
+Open the local web server 'http://127.0.0.1:8000'
 
 ## Future Work
 
