@@ -9,7 +9,7 @@ Since 2008, guests and hosts have used Airbnb to expand on traveling possibiliti
 In this project, we aim to achieve the following goals:
 
 1. Build a predictor that can accurately predict prices of Airbnb rentals in Los Angeles based on the information about geographic location, hosts, etc. 
-2. Develop the predictor to a web app so that users can easily use it to predict house prices based on given relevant information.
+2. Develop the predictor to a web app so that users can easily use it to predict house prices by providing relevant information.
 
 The significance of this project is the predictor we built enables user to predict the value of the target Airbnb houses given geographical features and information about the customers, hosts, and the services.
 
@@ -29,19 +29,27 @@ We fitted and compared three linear models: Ridge regression, Lasso regression, 
 
 The cross-validation RMSE values are summarized in the following table.
 
-| Algorithms              | Cross-validation RMSE (default) | Cross-validation RMSE (improved) |
-| ----------------------- | ------------------------------- | -------------------------------- |
-| Ridge Regression        | 0.43044                         | 0.430441                         |
-| LASSO Regression        | 0.74970                         | 0.430443                         |
-| Huber Regression        | 0.43609                         | 0.435920                         |
-| Random Forest Regressor | 0.277271                        | 0.277689                         |
-| XGB Regressor           | 0.34735                         | 0.272552                         |
+| Algorithms              | Cross-validation RMSE (default) | Cross-validation RMSE (improved) | Test RMSE (default) | Test RMSE (improved) |
+| ----------------------- | ------------------------------- | -------------------------------- | ------------------- | -------------------- |
+| Ridge Regression        | 0.430442                        | 0.430442                         | -                   | -                    |
+| LASSO Regression        | 0.749704                        | 0.430444                         | -                   | -                    |
+| Huber Regression        | 0.436043                        | 0.436043                         | -                   | -                    |
+| Random Forest Regressor | 0.277271                        | 0.279738                         | 0.273719            | 0.274737             |
+| XGB Regressor           | 0.303805                        | 0.275863                         | 0.300956            | 0.270926             |
 
 Among linear models, LASSO regression performed the worst since it ignores one potentially important variable - minimum nights. Non-parametric models perform better than linear models in general. 
 
-From the coefficient estimates of Lasso Regression model, we learn that availability365, calculated host listings count, all year availability, shared room type are positively related to the price, while no reviews, unincorporated areas, other cities, latitude contribute to the price in the negative direction.
+With the help of ELI5 and LIME explainer, we have some interesting findings. From the coefficient estimates of Lasso Regression model, we learn that availability365, calculated host listings count, all year availability, shared room type are positively related to the price, while no reviews, unincorporated areas, other cities, latitude contribute to the price in the negative direction. We find that for random forest regressor and XGB regressor, entire home/apt variables appear to be the most important variable.
 
-With the help of LIME, SHAP, and ELI5 explainer, we interpreted regression models, i.e. how the models are making predictions based on features, which features are important, etc. For example, we find houses with entire home/apt type of room, unknown neighborhood, fewer minimum nights required, more reviews, and larger latitude and longitude tend to be more expensive. For non-parametric models random forest regressor and XGB regressor, entire home/apt variables appear to be the most important variable.
+With the help of SHAP explainer, we interpreted XGBoost regression model. The dot plot shows how the values of each feature contribute to the price prediction. The bar plot shows the feature importance. It shows that houses with entire home/apt type of room tend to be more expensive, while houses with large latitude/latitude, more minimum nights tend to be cheaper. 
+
+**Figure 1. SHAP Summary Dot Plot.** 
+
+![xgb_SHAP_summary](./xgb_SHAP_summary.png)
+
+**Figure 2. SHAP Summary Bar Plot.**
+
+![xgb_SHAP_summary_bar](./xgb_SHAP_summary_bar.png)
 
 ## Conclusion and Future Work
 
