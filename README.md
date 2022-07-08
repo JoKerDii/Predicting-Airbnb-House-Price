@@ -34,8 +34,8 @@ The cross-validation RMSE values are summarized in the following table.
 | Ridge Regression        | 0.430442                        | 0.430442                         | -                   | -                    |
 | LASSO Regression        | 0.749704                        | 0.430444                         | -                   | -                    |
 | Huber Regression        | 0.436043                        | 0.436043                         | -                   | -                    |
-| Random Forest Regressor | 0.277271                        | 0.279738                         | 0.273719            | 0.274737             |
-| XGB Regressor           | 0.303805                        | 0.275863                         | 0.300956            | 0.270926             |
+| Random Forest Regressor | 0.277271                        | 0.276179                         | 0.273719            | 0.273233             |
+| XGB Regressor           | 0.303805                        | 0.274842                         | 0.300956            | 0.267921             |
 
 Among linear models, LASSO regression performed the worst since it ignores one potentially important variable - minimum nights. Non-parametric models perform better than linear models in general. 
 
